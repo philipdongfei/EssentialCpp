@@ -1,2 +1,7 @@
 # EssentialCpp
-essential c plus plus
+Essential C++ 
+
+Author: Stanley B. Lippman
+
+
+

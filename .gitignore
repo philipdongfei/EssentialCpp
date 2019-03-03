@@ -1,0 +1,9 @@
+*.class
+*.drjava
+*.txt
+.idea
+out/
+*.iml
+*.log
+*.out
+*.o

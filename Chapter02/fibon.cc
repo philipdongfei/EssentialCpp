@@ -1,8 +1,13 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 bool fibon_elem(int, unsigned int &);
 bool print_sequence(int pos);
+const vector<int>*
+fibo_seq(int size);
+
+
 
 int main(void)
 {
@@ -22,6 +27,25 @@ int main(void)
         print_sequence(pos);
     }
     return 0;
+}
+
+const vector<int>*
+fibo_seq( int size )
+{
+    const int max_size = 1024;
+    static vector<int> elems;
+
+    if (size <= 0 || size > max_size){
+        cerr << "fibon_seq(): oops: invalid size: "
+            << size << " -- can't fulfill request.\n";
+        return 0;
+    }
+    for (int ix = elems.size(); ix < size; ++ix) {
+        if (ix == 0 || ix == 1)
+            elems.push_back(1);
+        else elems.push_back(elems[ix-1] + elems[ix-2]);
+    }
+    return &elems;
 }
 
 bool fibon_elem( int pos, unsigned int &elem )
@@ -79,4 +103,15 @@ bool print_sequence(int pos)
     cout << endl;
 
     return true;
+}
+template <typename elemType>
+void display_message(const string &msg,
+        const vector<elemType> &vec)
+{
+    cout << msg;
+    for (int ix = 0; ix < vec.size(); ++ix)
+    {
+        elemType t = vec[ix];
+        cout << t << ' ';
+    }
 }
